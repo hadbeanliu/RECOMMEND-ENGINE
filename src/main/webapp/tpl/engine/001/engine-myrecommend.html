@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+    <title>我的推荐</title>
+<link data-th-href="|${tempPath}style/font-awesome.min.css|"
+    href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/wSelect.less|"
+    href="style/wSelect.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/themes.less|"
+    href="style/themes.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/layout.css|"
+    href="style/layout.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/master.css|"
+    href="style/master.css" rel="stylesheet" type="text/css" />
+<link href="/engine/cij/datatables/css/dataTables.foundation.css"
+    rel="stylesheet" type="text/css" />
+<link
+    data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"
+    href="datatables-extend/css/dataTables.response.less" rel="stylesheet"
+    type="text/less" />
+<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|"
+    src="javascript/less-1.7.3.min.js"></script>
+<script data-th-src="|${tempPath}javascript/modernizr.js|"
+    src="javascript/modernizr.js"></script>
+<script data-th-src="|${tempPath}javascript/tab.exam.js|"
+    src="javascript/tab.exam.js" type="text/javascript" charset="utf8"></script>
+    <script data-th-inline="javascript">
+    Cfg = {};
+    Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/ '/engine';
+    Cfg.tempPath = /*[[ ${tempPath} ]]*/ '/engine/tpl/001/';
+    </script>
+    
+</head>
+<body>
+<div id="layout">
+    <div class="wrapper" id="frame_wrapper">
+        <div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+            <div class="inner-wrap" id="frame_inner_wrap">  
+                <div class="left-off-canvas-menu hide-for-large"
+                        id="frame_canvas_menu" data-set="data_accordion"></div>
+                <div class="header" id="frame_header" include="include.html"
+                    data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+                </div>
+                <!--end header-->
+
+                <div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-12 large-2 columns"
+                                id="frame_main_col1">
+                            <div id="frame_accordion" include="include.html"
+                                data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+                            </div>
+                        </div>
+                        <div class="small-12 medium-12 large-10 columns bg-white" id="frame_main_col2">
+                            <div class="accordion_r margin-t10" id="frame_row_c2">
+                                <div id="data_datatable">
+                                    <div id="user_page">
+                                        <section class="panel">
+                                        <header class="panel-heading">我的推荐</header>
+                                        <div class="panel-body">
+                                            <div class="border-b padding-b">
+                                                <div class="row">
+                                                    <div class="small-12 medium-2 large-2 columns large-no-padding">
+                                                      <label for="right-label" class="left">当前业务</label>
+                                                    </div>
+                                                    <div class="small-12 medium-3 large-3 columns">
+                                                        <label>
+                                                            <select id="business" class="medium">
+                                                            </select>
+                                                        </label>
+                                                    </div>
+                                                    <div class="small-12 medium-7 large-7 columns">
+                                                        <ul class="button-group">
+                                                          <li><a class="button tiny" id="bizEdit"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>编辑业务</a></li>
+                                                          <li><a class="button tiny" id="bizAdd"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建业务</a></li>
+                                                          <li><a class="button disabled tiny" id="bizDel"><i class="fa fa-minus fa-fw" aria-hidden="true"></i>删除业务</a></li>
+                                                        </ul>
+                                                        <!--<a class="button secondary tiny margin-r10" id="bizEdit"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>编辑业务</a>
+                                                        <a class="button tiny margin-r10" id="bizAdd"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建业务</a>
+                                                        <a class="button secondary tiny" id="bizDel"><i class="fa fa-minus fa-fw" aria-hidden="true"></i>删除业务</a>-->
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="small-7 medium-3 large-3 columns large-no-padding">
+                                                      <label for="right-label" class="left">当前数据预处理状态</label>
+                                                    </div>
+                                                    <div class="small-2 medium-2 large-2 columns">
+                                                        <label class="left">未知</label>
+                                                    </div>
+                                                    <div class="small-12 medium-7 large-7 columns left">
+                                                        <ul class="button-group">
+                                                          <li><a class="button disabled tiny"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>启动数据预处理</a></li>
+                                                          <li><a class="button tiny"><i class="fa fa-search" aria-hidden="true"></i>查看数据预处理日志</a></li>
+                                                        </ul>
+                                                        <!--<a class="button secondary tiny margin-r10"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>启动数据预处理</a>
+                                                        <a class="button tiny"><i class="fa fa-search" aria-hidden="true"></i>查看数据预处理日志</a>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-rec-1 margin-t30">
+                                                <div class="tab clearfix margin-b">
+                                                    <ul class="clearfix" id="wdgz">
+                                                        <li class="on">
+                                                            <div class="tl">
+                                                                <div class="tr">
+                                                                    <div class="tc"><a href="#" target="_blank">线上生产环境</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="tl">
+                                                                <div class="tr">
+                                                                    <div class="tc"><a href="#" target="_blank">开发测试环境</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <!--<div class="tabmore no-paddingr">
+                                                        <a class="button tiny"><i class="fa fa-refresh fa-fw" aria-hidden="true"></i>刷新</a>
+                                                        <a data-th-href="@{/scenes/createSns.htm?bizCode=abc}" class="button secondary tiny"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建推荐场景</a>
+                                                    </div>-->
+                                                </div>
+                                                <div class="modcon clearfix no-padding">
+                                                    <div id="data_wdgz_con_1">
+                                                    <div class="filter-items hide v_search">
+															<div class="filter-items-wrap">
+																<input class="bizCode" type="text" name="bizCode" value=""/>
+																<div class="row do-search margin-t">
+																	<div class="small-12 columns">
+																		<a class="button right v_oper_do_search">搜索</a><a
+																			class="button right margin-r secondary  v_oper_reset_search">重置</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+                                                        <div class="table_bar clearfix">
+                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply">
+                                                                <div class="left bar_apply">
+                                                                    <div class="button left v_oper_refresh"><i class="fa fa-refresh"></i><span>刷新</span></div>
+                                                                    <a data-th-href="@{/scenes/createSns.htm?bizCode=abc}" class="button secondary tiny v_oper_add"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建推荐场景</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                        <!--加载中...-->
+                                                        <div class="v_table">
+                                                            <div class="v_page_processing row">
+                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                    <span class="fa-stack fa-lg">
+                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                    </span><br/>
+                                                                    <span>数据加载中...</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="data_wdgz_con_2" style="display: none">
+                                                    <div class="filter-items hide v_search">
+															<div class="filter-items-wrap">
+																<input class="bizCode" type="text" name="bizCode" value=""/>
+																<div class="row do-search margin-t">
+																	<div class="small-12 columns">
+																		<a class="button right v_oper_do_search">搜索</a><a
+																			class="button right margin-r secondary  v_oper_reset_search">重置</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+                                                        <div class="table_bar clearfix">
+                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply_2">
+                                                                <div class="left bar_apply">
+                                                                    <div class="button left v_oper_refresh"><i class="fa fa-refresh"></i><span>刷新</span></div>
+                                                                    <a data-th-href="@{/scenes/createSns.htm?bizCode=abc}" class="button secondary tiny v_oper_add"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建推荐场景</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                        <!--加载中...-->
+                                                        <div class="v_table">
+                                                            <div class="v_page_processing row">
+                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                    <span class="fa-stack fa-lg">
+                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                    </span><br/>
+                                                                    <span>数据加载中...</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->             
+                
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+
+                <div id="myModal" class="reveal-modal large openModal mymodal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+
+                    <form data-abide="">
+                        <h3 id="modalTitle">添加业务信息</h3>
+
+
+                        <div class="modal_wrap">
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <p class="font-small">业务针对数据集定义，定义了算法所能使用的数据范围。在添加推荐前，您需要先设置好业务。<a href="#" class="p-color inline-block">了解更多</a></p>
+                              </div>
+                            </div>
+                            <div class="row margin-t">
+                                <div class="large-3 columns">
+                                    <label class="right">配置业务基本信息</label>
+                                </div>
+                                <div class="large-9 columns"><label class="left">业务Code(即biz_code)唯一标示业务的配置信息</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="large-3 columns">
+                                    <label for="bizName" class="right">业务名称<span class="font-alert">*</span></label>
+                                </div>
+                                <div class="large-9 columns">
+                                 <label>
+                                    <input type="text" name="bizName" id="bizName" required="" placeholder="20字以内，支持中文、英文、数字"/>
+
+                                </label>
+                                <small class="error">请输入业务名称！</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="large-3 columns">
+                                    <label for="bizCode" class="right">业务Code<span class="font-alert">*</span></label>
+                                </div>
+                                <div class="large-9 columns">
+                                 <label>
+                                    <input type="text" id="bizCode" name="bizCode" required="" placeholder="20个字以内，支持数字和英文字母、业务代码"/>
+
+                                </label>
+                                <small class="error">请输入业务Code！</small>
+                                </div>
+                            </div>
+                            <!-- <div class="row hide">
+                                <input type="hidden" name="userMetaTable" value="USER_META_TABLE"/>
+                                <input type="hidden" name="userMetaDesc" value="USER_META_DESC"/>
+                                <input type="hidden" name="itemMetaTable" value="ITEM_META_TABLE"/>
+                                <input type="hidden" name="itemMetaDesc" value="ITEM_META_DESC"/>
+                                <input type="hidden" name="recommendableTable" value="RECOMMENDABLE_TABLE"/>
+                                <input type="hidden" name="userBehaviorTable" value="USER_BEHAVIOR_TABLE"/>
+                                <input type="hidden" name="opencollect" value="1"/>
+                            </div>
+                            <div class="row">
+
+                                <div class="large-2 columns">
+                                    <label class="right">配置场景和算法</label>
+                                </div>
+                                <div class="large-10 columns">
+                                 <label>
+                                    <input id="checkbox1" type="checkbox" checked="checked"/><label for="checkbox1">自动配置场景和算法</label>
+                                </label>
+                                <label>
+                                    <input id="checkbox2" type="checkbox" checked="checked"/><label for="checkbox2">自动数据预处理</label>
+                                </label>
+                                <label>
+
+                                    <a class="p-color"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                </label>
+                                </div>
+                            </div> -->
+
+                            <div class="row">
+                                <div class="large-3 columns">
+                                    <label class="right">使用MQ搜集日志:</label>
+                                </div>
+                                <div class="large-9 columns">
+                                 <label class="left">
+                                    <a href="javascript:;" class="p-color configure">配置</a>
+                                </label>
+                                </div>
+                            </div>
+                            <div class="configure-con" style="display:none">
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label class="right">MQ配置：</label>
+                                    </div>
+                                    <div class="large-9 columns">
+                                     <label class="left">配置MQ客户端，将用于接收系统日志</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label for="mqUser" class="right">用户名<span class="font-alert">*</span></label>
+                                    </div>
+                                    <div class="large-5 columns left">
+                                     <label>
+                                        <input type="text" id="mqUser" name="mqUser" required="" placeholder="用户名"/>
+
+                                    </label>
+                                    <small class="error">请输入用户名！</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label for="mqPassword" class="right">密码</label>
+                                    </div>
+                                    <div class="large-5 columns left">
+                                     <label>
+                                        <input type="text" id="mqPassword" name="mqPassword" required="" placeholder="密码"/>
+
+                                    </label>
+                                    <small class="error">请输入密码！</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label for="mqHost" class="right">host<span class="font-alert">*</span></label>
+                                    </div>
+                                    <div class="large-5 columns left">
+                                     <label>
+                                        <input type="text" id="mqHost" name="mqHost" required="" placeholder="host"/>
+                                    </label>
+                                    <small class="error">请输入host！</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label for="mqPort" class="right">port</label>
+                                    </div>
+                                    <div class="large-5 columns left">
+                                     <label>
+                                        <input type="text" id="mqPort" name="mqPort" required="" placeholder="port"/>
+                                    </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-3 columns">
+                                        <label for="mqDestination" class="right">destination<span class="font-alert">*</span></label>
+                                    </div>
+                                    <div class="large-5 columns left">
+                                     <label>
+                                        <input type="text" id="mqDestination" name="mqDestination" required="" placeholder="destination" pattern="[a-zA-Z]+"/>
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row confirm">
+                            <div class="small-12 columns">
+                                <a class="right button radius tiny v_oper_submit margin-r">保存</a>
+                                <a class="close-reveal-modal right button radius tiny secondary margin-r" aria-label="Close">取消</a>
+                            </div>
+                        </div>
+
+                    </form>
+                    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                </div>
+                <!--操作成功提示框-->
+                <div class="fixed v_info">
+                    <div class="row">
+                        <div class="large-12 columns" id="operate_alert_into">
+                            <div data-alert="" class="success alert-box warning radius nomarg v_show_oper_info">
+                                <div class="v_show_info"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="delete_warning" class="reveal-modal tiny v_del_waring warning-panel" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" tabindex="0">
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <i class="fa font-warning fa-warning font-i"></i>
+                        </div>
+                        <div class="small-9 columns margin-t10">
+                            <div class="row">
+                                <div class="small-12 columns v_info_msg">
+                                    确定要删除吗？
+                                </div>
+                            </div>
+                            <div class="row dele">
+                                <div class="small-12 columns">
+                                    <a class="right button radius tiny v_oper_do_delete">确定</a>
+                                    <a class="close-reveal-modal right button radius tiny secondary margin-r close_btn" aria-label="Close">取消</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="close-reveal-modal" aria-label="Close">×</a>
+                </div>
+            </div>
+        </div>
+        <div id="frame_javascript">
+            <div id="base_javascript">
+                <div data-th-replace="/engine/include :: #base_javascript"></div>
+            </div>
+            <div id="datatable_javascript">
+                <div data-th-replace="/engine/include :: #datatable_javascript"></div>
+            </div>
+            <div id="data_javascript">
+                <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/wSelect.js|" src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/datatables/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/datatables/js/dataTables.foundation.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/foundation/js/foundation.min.js"></script>
+                <script src="/engine/cij/js/jquery.datatable.page.js"></script>
+                <script src="/engine/cij/js/m/scenes.edit.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|" src="datatables-extend/js/foundation.extend.js"></script>
+                <script data-th-src="@{/cij/js/screen-load.js}" src="/engine/cij/js/screen-load.js"></script>
+                <script data-th-src="@{/cij/js/m/business.js}" src="/engine/cij/js/m/business.js"></script>
+                <!-- <script data-th-src="@{/cij/js/m//scenes.edit.js}"></script> -->
+                <script>
+                    $(document).foundation();
+                    
+                    //按钮组
+                    $('.btn-group').on('mouseover',function(){
+                        $(this).siblings('.btn-group-con').css('display','block');
+                    });
+                    $('.btn-group-con').on('mouseover',function(){
+                        $(this).css('display','block');
+                    });
+                    $('.btn-group').on('mouseout',function(){
+                        $(this).siblings('.btn-group-con').css('display','none');
+                    });
+                    $('.btn-group-con').on('mouseout',function(){
+                        $(this).css('display','none');
+                    });
+                    
+                    //配置信息显示隐藏
+                    $('.configure').click(function(){
+                        $('.configure-con').toggle();
+                    });
+                    new o_tab().init( "wdgz","li","data_wdgz_con_","on","",1,"" );
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

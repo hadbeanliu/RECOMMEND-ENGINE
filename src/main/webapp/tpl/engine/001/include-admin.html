@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+	<title>买家中心</title>
+	<link data-th-href="|${tempPath}style/font-awesome.min.css|"  href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/themes.less|"  href="style/themes.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/layout.css|"  href="style/layout.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/master.css|"  href="style/master.css" rel="stylesheet" type="text/css" />
+
+	<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|"  src="javascript/less-1.7.3.min.js"></script>
+	<script data-th-src="|${tempPath}javascript/modernizr.js|"  src="javascript/modernizr.js"></script>
+	<!-- <script type="text/javascript">
+	$(".small-block-grid-1").children().click(function(){
+		  alert("here");
+		  $(this).setAttribute("class","active");
+		  console.log('aaaa');
+	});
+	</script> -->
+</head>
+<body>
+    <div id="layout">
+                <!--end header-->
+                
+                <div class="main" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-12 large-2 columns" id="frame_main_col1">
+                            <div id="frame_accordion" include="include.html">
+                                <div id="data_accordion" class="hide-for-small" data-set="data_accordion">
+									<div class="accordion-list bg-secondary">
+										<div class="accordion-header b-color">推荐引擎</div>
+										<ul class="small-block-grid-1">
+										  <li>
+											<a data-th-href="@{/scenes.htm}">我的推荐</a>
+										  </li>
+										 <!--  <li>
+											<a href="engine-resource.html">资源管理</a>
+										  </li> -->
+										  <li>
+											<a data-th-href="@{/algorithm.htm}">算法管理</a>
+										  </li>
+										  <li>
+											<a data-th-href="@{/api.htm}">API调试</a>
+										  </li>
+										<!--   <li>
+											<a href="engine-result.html">效果报表</a>
+										  </li>
+										  <li>
+											<a href="engine-help.html">帮助</a>
+										  </li> -->
+										</ul>
+									</div>
+								</div>
+                            </div>
+                        </div>
+                        <div class="small-12 medium-12 large-10 columns" id="frame_main_col2">
+                            <div class="row" id="frame_main_c2_r1">
+                                <div class="small-12 medium-9 large-9 columns" id="frame_main_c2_r1_c1">
+                                	<div class="row" id="frame_main_c2_r1_c1_r1">
+                                    	<div class="small-12 columns" id="frame_main_c2_r1_c1_r1_c1">
+                                        	<div class="buyer-info" id="data_buyer_info">
+                                            	<div class="row buyer-siminfo">
+                                                	<div class="small-12 medium-5 large-5 columns">
+                                                        <div class="user-logo"><a title="APODE(a466858984)"><img title="APODE(a466858984)" alt="APODE(a466858984)" data-th-src="|${tempPath}images/userphoto.jpg|"  src="images/userphoto.jpg" /></a></div>
+                                                        <div class="user-mainInfo">
+                                                            <a class="name font-normal clearfix" title="APODE(a466858984)">APODE(a466858984)</a>
+                                                            <span class="heart-wrap clearfix"><a title="3颗星" class="heart"></a><a title="3颗星" class="heart"></a><a title="3颗星" class="heart"></a><a class="vip" title="会员1级">1</a></span>
+                                                        </div>
+                                                    </div>
+                                                	<div class="small-12 medium-7 large-7 columns">
+                                                    	<ul class="user-otherInfo small-block-grid-3">
+                                                        	<li><a class="font-alert font-normal" title="我的收获地址">我的收获地址</a></li>
+                                                        	<li><a class="font-alert font-normal" title="我的优惠信息">我的优惠信息</a></li>
+                                                        	<li><a class="font-alert font-normal" title="我的收藏">我的收藏</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            	<div class="row">
+                                                	<div class="small-12 columns">
+                                                        <div class="goods-state">
+                                                            <ul class="small-block-grid-5">
+                                                                <li><a class="font-normal" title="待付款">待付款</a><a class="font-alert font-normal">1</a></li>
+                                                                <li><a class="font-normal" title="待发货">待发货</a><a class="font-alert font-normal">2</a></li>
+                                                                <li><a class="font-normal" title="待收货">待收货</a><a class="font-alert font-normal">3</a></li>
+                                                                <li><a class="font-normal" title="待评价">待评价</a><a class="font-alert font-normal">4</a></li>
+                                                                <li><a class="font-normal" title="退款">退款</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                	<div class="row" id="frame_main_c2_r1_c1_r2">
+                                    	<div class="small-12 columns" id="frame_main_c2_r1_c1_r2_c1">
+                                            <div class="mod-rec-l1 margin-t wdgz" id="mod_wdgz">
+                                                <div class="modhead clearfix">
+                                                    <div class="modtitle"><h2><a href="#" target="_self" title="我的关注">我的关注</a></h2></div>
+                                                    <div class="modmore">
+                                                        <div id="data_sidebar">
+                                                            <a class="p-color" title="查看更多我的关注">查看更多</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modcon">
+                                                    <div id="data_wdgz_con">
+                                                        <ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-5 ">
+                                                            <li>
+                                                                <div class="block-img"><a title="来自：伙拼"><img title="来自：伙拼" alt=" 来自：伙拼" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                                <div class="des"><span class="font-alert font-tiny block">￥20</span><span class="font-tiny left">来自：</span><a class="store1"></a></div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="block-img"><a title="来自：伙拼"><img title="来自：伙拼" alt=" 来自：伙拼" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                                <div class="des"><span class="font-alert font-tiny block">￥20</span><span class="font-tiny left">来自：</span><a class="store1"></a></div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="block-img"><a title="来自：伙拼"><img title="来自：伙拼" alt=" 来自：伙拼" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                                <div class="des"><span class="font-alert font-tiny block">￥20</span><span class="font-tiny left">来自：</span><a class="store1"></a></div>
+                                                            </li>
+                                                            <li class="hide-for-small">
+                                                                <div class="block-img"><a title="来自：伙拼"><img title="来自：伙拼" alt=" 来自：伙拼" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                                <div class="des"><span class="font-alert font-tiny block">￥20</span><span class="font-tiny left">来自：</span><a class="store1"></a></div>
+                                                            </li>
+                                                            <li class="hide-for-small">
+                                                                <div class="block-img"><a title="来自：伙拼"><img title="来自：伙拼" alt=" 来自：伙拼" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                                <div class="des"><span class="font-alert font-tiny block">￥20</span><span class="font-tiny left">来自：</span><a class="store1"></a></div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="small-12 medium-3 large-3 columns" id="frame_main_c2_r1_c2">
+                                    <div class="mod-rec-l1 wdll" id="mod_wdll">
+                                        <div class="modhead clearfix">
+                                            <div class="modtitle"><h2><a href="#" target="_self" title="我的浏览">我的浏览</a></h2></div>
+                                            <div class="modmore">
+                                                <div id="data_sidebar">
+                                                    <a class="p-color" title="查看更多我的浏览">查看更多</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modcon">
+                                            <div id="data_wdll_con">
+                                                <ul class="small-block-grid-2 medium-block-grid-1 large-block-grid-1">
+                                                    <li>
+                                                        <div class="img left margin-r"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                        <div class="des auto_list">
+                                                            <span class="font-tiny title"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                            <span class="block">
+                                                                <a class="font-alert font-tiny cursor-auto">￥138</a>
+                                                                <a class="font-tiny line-through cursor-auto">￥469</a>
+                                                            </span>
+                                                            <a class="font-tiny pad1 p-border">找相似</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img left margin-r"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                        <div class="des auto_list">
+                                                            <span class="font-tiny title"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                            <span class="block">
+                                                                <a class="font-alert font-tiny cursor-auto">￥138</a>
+                                                                <a class="font-tiny line-through cursor-auto">￥469</a>
+                                                            </span>
+                                                            <a class="font-tiny pad1 p-border">找相似</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img left margin-r"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                        <div class="des auto_list">
+                                                            <span class="font-tiny title"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                            <span class="block">
+                                                                <a class="font-alert font-tiny cursor-auto">￥138</a>
+                                                                <a class="font-tiny line-through cursor-auto">￥469</a>
+                                                            </span>
+                                                            <a class="font-tiny pad1 p-border">找相似</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img left margin-r"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                        <div class="des auto_list">
+                                                            <span class="font-tiny title"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                            <span class="block">
+                                                                <a class="font-alert font-tiny cursor-auto">￥138</a>
+                                                                <a class="font-tiny line-through cursor-auto">￥469</a>
+                                                            </span>
+                                                            <a class="font-tiny pad1 p-border">找相似</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="frame_main_c2_r2">
+                                <div class="small-12 columns" id="frame_main_c2_r2_c1">
+                                    <div class="mod-rec-l1 margin-t cwxh" id="mod_cwxh">
+                                        <div class="modhead clearfix">
+                                            <div class="modtitle"><h2><a href="#" target="_self" title="猜我喜欢">猜我喜欢</a></h2></div>
+                                            <div class="modmore">
+                                                <div id="data_sidebar">
+                                                    <a class="p-color radius fa-border p-border" title="换一组"><i class="fa fa-refresh"></i>换一组</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modcon">
+                                            <div id="data_cwxh_con">
+                                                <ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-5">
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="hide-for-small">
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="hide-for-small">
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="frame_main_c2_r3">
+                                <div class="small-12 columns" id="frame_main_c2_r3_c1">
+                                    <div class="mod-rec-l1 margin-t rxtj" id="mod_rxtj">
+                                        <div class="modhead clearfix">
+                                            <div class="modtitle"><h2><a href="#" target="_self" title="热销推荐">热销推荐</a></h2></div>
+                                            <div class="modmore">
+                                                <div id="data_sidebar">
+                                                    <a class="p-color radius fa-border p-border" title="换一组"><i class="fa fa-refresh"></i>换一组</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modcon">
+                                            <div id="data_rxtj_con">
+                                                <ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-5">
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="hide-for-small">
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="hide-for-small">
+                                                    	<div class="border">
+                                                            <div class="block-img"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链"><img title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" alt="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链" data-th-src="|${tempPath}images/1.jpg|"  src="images/1.jpg" /></a></div>
+                                                            <div class="des pad5">
+                                                                <span class="font-tiny block"><a title="精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链">精品越南老挝大红酸枝手串红木佛珠念珠车挂件摆件酸枝原木手串链</a></span>
+                                                                <span class="block">
+                                                                    <a class="font-alert font-large cursor-auto">￥138</a>
+                                                                    <a class="font-small line-through cursor-auto">￥469</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->
+                <!--操作成功提示框-->
+                <div class="fixed v_info_success">
+                                        <div class="row">
+                                            <div class="large-12 columns" id="operate_alert_into">
+                                                <div data-alert="" class="success alert-box warning radius nomarg v_show_oper_info">
+                                                    <div><i class="fa fa-fw fa-check"></i><span class="v_show_info">操作成功.</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                </div>
+                <!--未选中提示框-->
+                <div class="fixed v_info_fail">
+                                        <div class="row">
+                                            <div class="large-12 columns" id="error_alert_into">
+                                                <div data-alert="" class="error alert-box warning radius nomarg v_show_oper_info">
+                                                    <div><i class="fa fa-fw fa-exclamation-circle"></i><span class="v_show_info">未选择.</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+               </div>
+                
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+            </div>
+        <!-- </div> -->
+        <div id="frame_javascript">
+            <div id="data_javascript">
+                <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|"  src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+				<script data-th-src="|${tempPath}javascript/AppendAround.js|"  src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|"  src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="@{/cij/foundation/js/foundation.min.js}" src="/emall/cij/foundation/js/foundation.min.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|"  src="datatables-extend/js/foundation.extend.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/moment.min.js|"  src="datatables-extend/js/moment.min.js"></script>
+                <script data-th-src="@{/cij/js/thymeleaf.js}" src="/emall/cij/js/thymeleaf.js" ></script>
+                <script data-th-src="@{/cij/thymol/thymol-full.js}" src="/emall/cij/thymol/thymol-full.js" ></script>
+                <script>
+                $(document).foundation();
+				$( ".top_search" ).appendAround();
+				$( ".accordion-list" ).appendAround();
+				$(".small-block-grid-1").children().click(function(){
+					  alert("here");
+					  $(this).setAttribute("class","active");
+					
+				});
+                </script>
+            </div>
+        </div>
+</body>
+</html>

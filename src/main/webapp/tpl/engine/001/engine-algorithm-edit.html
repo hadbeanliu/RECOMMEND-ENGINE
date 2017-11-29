@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+	<title>算法管理-编辑离线算法</title>
+	<link data-th-href="|${tempPath}style/font-awesome.min.css|" href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/wSelect.less|"  href="style/wSelect.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/themes.less|"  href="style/themes.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/layout.css|"  href="style/layout.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/master.css|"  href="style/master.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"  href="datatables-extend/css/dataTables.response.less" rel="stylesheet" type="text/less" />
+	<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|" src="javascript/less-1.7.3.min.js"></script>
+	<script data-th-src="|${tempPath}javascript/modernizr.js|" src="javascript/modernizr.js"></script>
+    <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+    <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+    <script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+	<script data-th-inline="javascript">
+	Cfg = {};
+	Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/ '/engine';
+	Cfg.tempPath = /*[[ ${tempPath} ]]*/ '/engine/tpl/engine/001/';
+	</script>
+    
+</head>
+<body>
+<div id="layout">
+    <div class="wrapper" id="frame_wrapper">
+        <div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+            <div class="inner-wrap" id="frame_inner_wrap">  
+                <div class="left-off-canvas-menu hide-for-large"
+						id="frame_canvas_menu" data-set="data_accordion"></div>
+					<div class="header" id="frame_header" include="include.html"
+						data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+					</div>
+                <!--end header-->
+
+                <div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-2 large-2 columns"
+								id="frame_main_col1">
+							<div id="frame_accordion" include="include.html"
+								data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+							</div>
+						</div>
+                        <div class="small-12 medium-10 large-10 columns bg-white" id="frame_main_col2">
+                        	<div class="accordion_r margin-t10" id="frame_row_c2">
+                            <div id="frame_dataTable">
+                            	<div id="data_datatable">
+                                	<div class="panel">
+                                    	<div class="panel-heading" data-th-text="|算法管理-编辑${type == 'offline' ? '离线':'在线'}算法|"></div>
+                                        <div class="panel-body">
+                                        	<form id="algData" data-abide="">
+                                            	<div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="algCode" class="right">算法CODE:</label>
+                                                </div>
+                                                <div class="small-8 columns">
+                                                    <label>
+                                                    	<input type="hidden" id="algId" name="id" data-th-value="${id}"/>
+                                                        <input type="text" id="algCode" name="algCode" readonly="readonly" />
+                                                    </label>
+                                                </div>
+                                                <div class="small-2 columns">
+                                                	<label class="font-tiny">20个字以内，支持英文、下划线、数字</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="algDesc" class="right">算法介绍:</label>
+                                                </div>
+                                                <div class="small-8 columns left">
+                                                    <label>
+                                                        <textarea name="algDesc" id="algDesc" placeholder="">融合显示反馈和隐式反馈的矩阵分解算法</textarea>
+                                                    </label>
+                                                </div>
+                                                <div class="small-2 columns">
+                                                	<label class="font-tiny">200个字以内</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="radio" class="right">算法类型:</label>
+                                                </div>
+                                                <div class="small-10 columns">
+                                                    <div class="line-he-37">
+                                                    	<span id="algType">
+                                                    	</span>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="right-label" class="right">算法状态:</label>
+                                                </div>
+                                                <div class="small-10 columns">
+                                                	<input type="hidden" name="status" />
+                                                	<input type="hidden" name="source" />
+                                                    <label class="font-success line-he-37" id="statusDesc">正常可使用</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="right-label" class="right">算法类别:</label>
+                                                </div>
+                                                <div class="small-8 columns left">
+                                                    <label>
+                                                        <select id="customDropdown1" class="medium" readonly="readonly">
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="right-label" class="right">&nbsp;</label>
+                                                </div>
+                                                <div class="small-10 columns">
+	                                                <div class="row">
+		                                                <div class="small-2 columns left">
+		                                                    <label>输入数据:</label>
+		                                                </div>
+		                                                <div class="small-8 columns left">
+		                                                	<input type="hidden" name="input"/>
+		                                                    <label id="input">USER_ITEM_SCORE</label>
+		                                                </div>
+	                                                </div>
+	                                                <div class="row mar-t">
+		                                                <div class="small-2 columns left">
+		                                                    <label>输出数据:</label>
+		                                                </div>
+		                                                <div class="small-8 columns left">
+		                                                	<input type="hidden" name="output"/>
+		                                                    <label id="output">USER_ITEM_SCORE</label>
+		                                                </div>
+	                                                </div>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="right-label" class="right">算法启动参数:</label>
+                                                </div>
+                                                <div class="small-9 columns left">
+                                                    <label class="p-color line-he-37 addCode">添加参数</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                              	<div class="small-2 columns">
+                                                  <label for="right-label" class="right">&nbsp;</label>
+                                                </div>
+                                                <div class="small-10 columns left">
+                                                	<input type="hidden" name="paramRow" value="0"/>
+                                                	<table id="codeTable" border="1" cellspacing="0" cellpadding="0"
+														style="visibility: visible;border-collapse: collapse;width:100% ">
+														<thead>
+															<tr>
+                                                               <th class="" tabindex="0" aria-label="参数Code" style="width: 25%;text-align:left;">参数Code</th>
+                                                               <th class="" tabindex="1" aria-label="默认值" style="width: 25%;text-align:left;">默认值</th>
+                                                               <th class="" tabindex="2" aria-label="参数描述" style="width: 38%;text-align:left;">参数描述</th>
+                                                               <th class="" aria-label="操作" style="width: 12%;text-align:left;">操作</th>
+															</tr>
+														</thead>
+														<tbody>
+															<!-- 这里是组合数据 -->
+														</tbody>
+													</table>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                              	<div class="small-2 columns">
+                                                  <label for="right-label" class="right">算法文件信息</label>
+                                                </div>
+                                                <div class="small-9 columns left">
+                                                    <label class="left">配置该算法的执行主类和路径</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="mainClass" class="right">主类<span class="p-color">*</span></label>
+                                                </div>
+                                                <div class="small-10 columns">
+                                                    <label>
+                                                        <input type="text" name="mainClass" readonly="readonly" required="" id="mainClass" placeholder=""/>
+                                                    </label>
+                                                    <small class="error">请输入主类！</small>
+                                                </div>
+                                              </div>
+                                               <div class="row">
+                                                <div class="small-2 columns">
+                                                  <label for="jarPath" class="right">jar名<span class="p-color">*</span></label>
+                                                </div>
+                                                <div class="small-10 columns">
+                                                    <label>
+                                                        <input type="text" name="jarPath" readonly="readonly" required="" id="jarPath" placeholder=""/>
+                                                    </label>
+                                                    <small class="error">请输入jar名！</small>
+                                                </div>
+                                              </div>
+                                              <div class="row confirm-btn">
+                                              	<div class="large-12 columns">
+                                              		<input type="hidden" name="method" value="EDIT"/>
+                                                    <a class="button tiny right submit" data-th-value="${type}">提交</a>
+                                                    <a class="button secondary tiny right close" data-th-value="${type}">关闭</a>
+                                                </div>
+                                              </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!--操作成功提示框-->
+                <div class="fixed v_info">
+                    <div class="row">
+                        <div class="large-12 columns" id="operate_alert_into">
+                            <div data-alert="" class="success alert-box warning radius nomarg v_show_oper_info">
+                                <div class="v_show_info"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->             
+               <!--  <div class="footer" id="frame_footer" role="contentinfo"
+						include="include.html"
+						data-th-include="${tempInternalPath + 'include'} :: #frame_footer">
+					</div> -->
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+            </div>
+        </div>
+        <div id="frame_javascript">
+        	<div id="base_javascript">
+	        	<div data-th-replace="/engine/include :: #base_javascript"></div>
+        	</div>
+        	<div id="datatable_javascript">
+        		<div data-th-replace="/engine/include :: #datatable_javascript"></div>
+        	</div>
+             <div id="data_javascript">
+                <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+				<script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/wSelect.js|" src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/foundation/js/foundation.min.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|" src="datatables-extend/js/foundation.extend.js"></script>
+				<script data-th-src="@{/cij/js/screen-load.js}" src="/engine/cij/js/screen-load.js"></script>
+				<script data-th-src="@{/cij/js/m/tabletr.addlt.js}" src="/engine/cij/js/m/tabletr.addlt.js"></script>
+				<script data-th-src="@{/cij/js/m/algorithm.edit.js}" src="/engine/cij/js/m/algorithm.edit.js"></script>
+                <script>
+                $(document).foundation();
+                </script>
+            </div> 
+        </div>
+    </div>
+</div>
+</body>
+</html>

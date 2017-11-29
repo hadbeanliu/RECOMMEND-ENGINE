@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<types>
+
+	<type name="质检算法" mode="offline">
+		
+	</type>
+	
+	<type name="离线推荐算法" mode="offline">
+		
+		<category name="STR" input="user_behavior_table" output="user_item_score_list"/>
+		<category name="STA" input="user_behavior_table" output="user_item_score_list"/>
+		<category name="IBCF01" input="user_item_score_list" output="item_item_rec_list"/>
+		<category name="UBCF01" input="user_item_score_list" output="user_item_rec_list"/>
+		<category name="ALS01" input="user_item_score_list" output="user_item_rec_list" />
+		<category name="SA01" input="user_behavior_table" output="feedback"/>
+		<category name="IT2F" input="item_meta_table" output="item_meta_table"/>
+		<category name="IM2T" input="item_meta_table" output="tmp_data_table"/>
+		<category name="IM2IM" input="tmp_data_table" output="tmp_data_table"/>
+		<category name="IM2IF" input="tmp_data_table" output="item_feature_table"/>
+		<category name="IF2R" input="item_feature_table" output="item_meta_table"/>
+		<category name="S2M" input="user_item_score_list" output="user_message_table"/>
+	</type>
+	
+	
+<!-- 	<type name="效果算法" mode="offline">
+		<category name="SA01" input="user_behavior_table" output="feedback"/>
+	
+	</type> -->
+	
+	<type name="实时推荐算法" mode="online">
+			<category name="DR01" input="user_behavior_table" output="default_rec_list" />
+	</type>
+
+    
+</types>

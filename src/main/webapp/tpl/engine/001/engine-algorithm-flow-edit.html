@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+    <title>算法模板编辑</title>
+<link data-th-href="|${tempPath}style/font-awesome.min.css|"
+    href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/wSelect.less|"
+    href="style/wSelect.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/themes.less|"
+    href="style/themes.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/layout.css|"
+    href="style/layout.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/master.css|"
+    href="style/master.css" rel="stylesheet" type="text/css" />
+<link href="/engine/cij/datatables/css/dataTables.foundation.css"
+    rel="stylesheet" type="text/css" />
+<link
+    data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"
+    href="datatables-extend/css/dataTables.response.less" rel="stylesheet"
+    type="text/less" />
+<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|"
+    src="javascript/less-1.7.3.min.js"></script>
+<script data-th-src="|${tempPath}javascript/modernizr.js|"
+    src="javascript/modernizr.js"></script>
+    <script data-th-inline="javascript">
+    Cfg = {};
+    Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/ '/engine';
+    Cfg.tempPath = /*[[ ${tempPath} ]]*/ '/engine/tpl/001/';
+    </script>
+    
+</head>
+<body>
+<div id="layout">
+    <div class="wrapper" id="frame_wrapper">
+        <div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+            <div class="inner-wrap" id="frame_inner_wrap">  
+                <div class="left-off-canvas-menu hide-for-large"
+                        id="frame_canvas_menu" data-set="data_accordion"></div>
+                <div class="header" id="frame_header" include="include.html"
+                    data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+                </div>
+                <!--end header-->
+
+                <div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-2 large-2 columns"
+                                id="frame_main_col1">
+                            <div id="frame_accordion" include="include.html"
+                                data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+                            </div>
+                        </div>
+                        <div class="small-12 medium-10 large-10 columns bg-white" id="frame_main_col2">
+                            <div class="accordion_r margin-t10" id="frame_row_c2">
+                                <div id="data_datatable">
+                                    <div id="user_page">
+                                        <section class="panel">
+                                        <header class="panel-heading">算法模板编辑</header>
+                                        <div class="panel-body">
+                                            <form>
+                                            <div class="row">
+                                                <div class="large-12 columns">
+                                                    <div class="row">
+                                                        <div class="large-1 columns">
+                                                          <label for="algcode" class="right font-tiny">流程Code</label>
+                                                        </div>
+                                                        <div class="small-2 columns">
+                                                            <label>
+                                                                <input type="text"  id="flowcode" required="" placeholder="" name="flowcode" data-th-value="${id}"/>
+                                                            </label>
+                                                            
+                                                        </div>
+                                                        <div class="large-1 columns">
+                                                          <label for="algname" class="right font-tiny">简介</label>
+                                                        </div>
+                                                        <div class="large-8 end columns">
+                                                            <label>
+                                                                <input type="text"  id="desc" name="desc" data-th-value="${desc}"/>
+                                                            </label>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <div class="large-12 columns">
+                                                    <!--加载中...-->
+                                                    <!--<div class="v_page_processing row">
+                                                        <div class="small-12 medium-6 large-6 columns"></div>
+                                                        <div class="small-12 medium-6 large-6 columns"></div>
+                                                        <div id="DataTables_Table_0_processing"
+                                                            class="dataTables_processing">
+                                                            <span class="fa-stack fa-lg"> <i
+                                                                class="fa fa-square fa-stack-2x"></i> <i
+                                                                class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                            </span><br /> <span>数据加载中...</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="v_table simple"></div>-->
+                                                    <div class="v_table simple">
+                                                        <div class="dataTables_wrapper dt-foundation no-footer hasborder">
+                                                            <table class="display dataTable no-footer" style="width: 100%;" id="codeTable">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="序号" style="width: 6%;">序号</th>
+                                                                        <th class="" rowspan="1" colspan="1" aria-label="算法Code" style="width: 10%;">算法Code</th>
+                                                                        <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="input" style="width: 15%;">input</th>
+                                                                        <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="output" style="width: 15%;">output</th>
+                                                                        <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="有向边" style="width: 20%;">有向边</th>
+                                                                        <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="0" colspan="0" aria-label="参数" style="display:none;"/>
+                                                                        <th class="" rowspan="1" colspan="1" aria-label="操作" style="width: 34%;">操作</th>
+                                                                 
+                                                                    </tr>
+                                                                </thead>
+                                                                <a href="javascript:;" class="button tiny hollow addCode-down"  data-reveal-id="addModal">往下添加一行</a><br/>
+                                                                
+                                                                <tbody id="alg-flow-pan">
+                                                               
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="large-6 columns">
+                                                    <a class="button tiny right submit">保存</a>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->             
+                
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+
+                <!--参数设置弹出框-->
+                <div id="codeModal" class="reveal-modal large openModal mymodal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <form data-abide="">
+                        <h3 id="modalTitle">参数设置</h3>
+                        <div class="modal_wrap">
+                            <div class="row">
+                                <div class="large-12 columns">
+                                    <table class="common-table" border="1" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 30%;text-align: center;">参数名</th>
+                                                <th style="width: 40%;text-align: center;">值</th>
+                                                <th style="width: 30%;text-align: center;">描述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="param-box">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row confirm">
+                            <div class="small-12 columns">
+                                <a id="param-set-submit" class="close-reveal-modal right button radius tiny v_oper_submit margin-r">保存</a>
+                                <a class="close-reveal-modal right button radius tiny secondary margin-r" aria-label="Close">取消</a>
+                            </div>
+                        </div>
+                    </form>
+                    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                </div>
+                <!--添加行弹出框-->
+                <div id="addModal" class="reveal-modal large openModal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <form data-abide="">
+                        <h3 id="modalTitle">添加行</h3>
+                        <div class="modal_wrap">
+                            <div class="row">
+                                <div id="alg-line" class="large-12 columns">
+                                    <ul>
+                                        <li>
+                                            <div class="type-list"><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i><a href="javascript:;">类别1</a></div>
+                                            <ul class="alg-list hide">
+                                                <li>
+                                                  <input type="radio" name="type" value="算法1" id="alg1" checked="true"/><label for="alg1">算法1</label>
+                                                </li>
+                                                <li>
+                                                  <input type="radio" name="type" value="算法2" id="alg2"/><label for="alg2">算法2</label>
+                                                </li>
+                                                <li>
+                                                  <input type="radio" name="type" value="算法3" id="alg3"/><label for="alg3">算法3</label>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="type-list"><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i><a href="javascript:;">类别2</a></div>
+                                            <ul class="alg-list hide">
+                                                <li>
+                                                  <input type="radio" name="type" value="算法1" id="alg4"/><label for="alg4">算法1</label>
+                                                </li>
+                                                <li>
+                                                  <input type="radio" name="type" value="算法2" id="alg5"/><label for="alg5">算法2</label>
+                                                </li>
+                                                <li>
+                                                  <input type="radio" name="type" value="算法3" id="alg6"/><label for="alg6">算法3</label>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row confirm">
+                            <div class="small-12 columns">
+                                <a class="close-reveal-modal right button radius tiny v_oper_submit margin-r" id="save-alg">保存</a>
+                                <a class="close-reveal-modal right button radius tiny secondary margin-r" aria-label="Close">取消</a>
+                            </div>
+                        </div>
+
+                    </form>
+                    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                </div>
+                <!--操作成功提示框-->
+                <div class="fixed v_info">
+                    <div class="row">
+                        <div class="large-12 columns" id="operate_alert_into">
+                            <div data-alert="" class="success alert-box warning radius nomarg v_show_oper_info">
+                                <div class="v_show_info"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="delete_warning" class="reveal-modal tiny v_del_waring warning-panel" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" tabindex="0">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <i class="fa font-warning fa-warning font-i"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-8 columns">
+                            <div class="row">
+                                <div class="small-12 columns v_info_msg">
+                                    确定要删除吗？
+                                </div>
+                            </div>
+                            <div class="row dele">
+                                <div class="small-12 columns">
+                                    <a class="right button radius tiny v_oper_do_delete">确定</a>
+                                    <a class="close-reveal-modal right button radius tiny secondary margin-r close_btn" aria-label="Close">取消</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="close-reveal-modal" aria-label="Close">×</a>
+                </div>
+            </div>
+        </div>
+        <div id="frame_javascript">
+            <div id="base_javascript">
+                <div data-th-replace="/engine/include :: #base_javascript"></div>
+            </div>
+            <div id="datatable_javascript">
+                <div data-th-replace="/engine/include :: #datatable_javascript"></div>
+            </div>
+            <div id="data_javascript">
+                <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/wSelect.js|" src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/datatables/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/datatables/js/dataTables.foundation.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/foundation/js/foundation.min.js"></script>
+                <script src="/engine/cij/js/jquery.datatable.page.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|" src="datatables-extend/js/foundation.extend.js"></script>
+                <script data-th-src="@{/cij/js/screen-load.js}" src="/engine/cij/js/screen-load.js"></script>
+                <script data-th-src="@{/cij/js/m/algorithmflow.edit.js}"
+						src="/engine/cij/js/m/algorithmflow.edit.js"></script>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

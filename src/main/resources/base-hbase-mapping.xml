@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tables>
+
+	<table name="user_emall" keyClass="java.lang.String">
+
+			<family name="act" maxVersion="1"/>
+			<family name="info" maxVersion="1"/>
+			<family name="tags" maxVersion="1"/>
+			<family name="his" maxVersion="1"/>
+			<family name="mk" maxVersion="1"/>
+			<family name="simuser" maxVersion="1"/>
+			<family name="inst" maxVersion="1"/>
+			<family name="AttentionGoods" maxVersion="1"/>
+			<family name="BrowseGoods" maxVersion="1"/>
+			<family name="BuyGoods" maxVersion="1"/>
+			<family name="like" maxVersion="1"/>
+			<family name="collect" maxVersion="1"/>
+	</table>
+	
+	<fields>
+			 
+			 <!-- information fields								-->
+			<field name="name" fimily="info" qualifier="name" type="java.lang.String"/>
+			<field name="sex" fimily="info" qualifier="sex" type="java.lang.char"/>
+			<field name="age" fimily="info" qualifier="age" type="int"/>
+			<field name="bir" fimily="info" qualifier="bir" type="java.lang.String"/>
+			<field name="exp" fimily="info" qualifier="exp" type="java.lang.String"/>
+			<field name="job" fimily="info" qualifier="job" type="java.lang.String"/>
+			
+			 <!--	 user graph 										-->
+			<field name="job" fimily="tag" type="java.util.Map[java.lang.String,float]"/>
+			
+			 <!-- 	 history record 								-->
+			 <field name="his" fimily="his" type="java.util.Map[java.lang.String,long]"/>
+			 <!--	 user graph 										-->
+			<field name="mk" fimily="mk" type="java.util.Map[java.lang.String,float]"/>
+			
+			 <!-- 	 history record 								-->
+			 <field name="act" fimily="act" type="java.util.Map[java.lang.String,java.lang.String]"/>
+			 
+			
+		</fields>
+		
+		<table name="item_emall" keyClass="java.lang.String">
+
+			<family name="info" maxVersion="1"/>
+			<family name="sim" maxVersion="2"/>
+			<family name="his" maxVersion="1"/>
+			<family name="sim" maxVersion="4"/>
+			<family name="relationPerson" maxVersion="4"/>
+		</table>
+		
+
+</tables>

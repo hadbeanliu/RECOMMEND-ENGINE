@@ -1,0 +1,5 @@
+vue.js 1.0.24
+http://vuejs.org.cn/
+
+vue-router 0.7.13
+http://router.vuejs.org/

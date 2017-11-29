@@ -1,0 +1,10 @@
+<script>
+function pseth() {
+    var iObj = parent.parent.document.getElementById('frame_pingjia');//A和main同域，所以可以访问节点
+    //iObjH = parent.parent.frames["frame_pingjia"].frames["resizeIFrameH"].location.hash;//访问自己的location对象获取hash值
+    iObjH = location.hash;
+    iObj.style.height = iObjH.split("#")[1]+"px";//操作dom
+    parent.parent.document.getElementById('otherInfo').style.display = iObjH.split("#")[2];
+}
+pseth();
+</script>

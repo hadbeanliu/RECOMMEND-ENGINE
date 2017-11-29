@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+	<title>API调试</title>
+	<link data-th-href="|${tempPath}style/font-awesome.min.css|" href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/wSelect.less|"  href="style/wSelect.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/themes.less|"  href="style/themes.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/layout.css|"  href="style/layout.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/master.css|"  href="style/master.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"  href="datatables-extend/css/dataTables.response.less" rel="stylesheet" type="text/less" />
+	<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|" src="javascript/less-1.7.3.min.js"></script>
+	<script data-th-src="|${tempPath}javascript/modernizr.js|" src="javascript/modernizr.js"></script>
+	<script data-th-inline="javascript">
+	Cfg = {};
+	Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/ '/engine';
+	Cfg.tempPath = /*[[ ${tempPath} ]]*/ '/engine/tpl/001/';
+	</script>
+    
+</head>
+<body>
+<div id="layout">
+    <div class="wrapper" id="frame_wrapper">
+        <div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+            <div class="inner-wrap" id="frame_inner_wrap">  
+                <div class="left-off-canvas-menu hide-for-large"
+						id="frame_canvas_menu" data-set="data_accordion"></div>
+					<div class="header" id="frame_header" include="include.html"
+						data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+					</div>
+                <!--end header-->
+
+                <div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-2 large-2 columns"
+								id="frame_main_col1">
+								<div id="frame_accordion" include="include.html"
+									data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+								</div>
+							</div>
+                        <div class="small-12 medium-10 large-10 columns bg-white" id="frame_main_col2">
+                        	<div class="accordion_r margin-t10" id="frame_row_c2">
+                            <div id="frame_dataTable">
+                            	<div id="data_datatable">
+                                	<div class="panel">
+                                    	<div class="panel-heading">API调试</div>
+                                        <div class="panel-body">
+                                        	<form id="apiData" data-th-value="${NmCid}" data-abide="">
+                                            	<div class="row">
+                                                <div class="small-12 medium-3 large-2 columns">
+                                                  <label class="right">请选择接口:</label>
+                                                </div>
+                                                <div class="small-11 medium-8 large-9 columns">
+                                                    <label>
+                                                        <select id="apilist" class="medium">
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                                <div class="small-1 columns">
+                                                	<a class="p-color line-he-37"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-12 medium-3 large-2 columns">
+                                                  <label for="method" class="right">请求方法:</label>
+                                                </div>
+                                                <div class="small-11 medium-8 large-9 columns end">
+                                                    <label>
+                                                        <input type="text" name="method" id="method" required="" disabled="disabled" />
+                                                    </label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-12 medium-3 large-2 columns">
+                                                  <label for="uri" class="right">请求地址:</label>
+                                                </div>
+                                                <div class="small-11 medium-8 large-9 columns">
+                                                    <label>
+                                                        <input type="text" name="uri" id="uri" required="" disabled="disabled" />
+                                                    </label>
+                                                </div>
+                                                <div class="small-1 columns">
+                                                	<a class="p-color line-he-37"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-12 medium-3 large-2 columns">
+                                                  <label for="params" class="right">请求参数:</label>
+                                                </div>
+                                                <div class="small-11 medium-8 large-9 columns end">
+                                                    <label>
+                                                        <textarea rows="3" name="params" id="params"></textarea>
+                                                    </label>
+                                                    <a class="button tiny margin-b" id="apiTest">调试接口</a>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="small-12 medium-3 large-2 columns">
+                                                  <label class="right">返回结果:</label>
+                                                </div>
+                                                <div class="small-11 medium-8 large-9 columns end">
+                                                    <label>
+                                                        <textarea rows="8" id="result" disabled="disabled"></textarea>
+                                                    </label>
+                                                </div>
+                                              </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->             
+               
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+            </div>
+        </div>
+        <div id="frame_javascript">
+        	<div id="base_javascript">
+	        	<div data-th-replace="/engine/include :: #base_javascript"></div>
+        	</div>
+        	<div id="datatable_javascript">
+        		<div data-th-replace="/engine/include :: #datatable_javascript"></div>
+        	</div>
+            <div id="data_javascript">
+           <!-- <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+				<script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/wSelect.js|" src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+                <script src="/engine/cij/foundation/js/foundation.min.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|" src="datatables-extend/js/foundation.extend.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/moment.min.js|" src="datatables-extend/js/moment.min.js"></script>
+                <script>
+                $(document).foundation();
+                </script> -->
+				<script data-th-src="@{/cij/js/screen-load.js}" src="/engine/cij/js/screen-load.js"></script>
+				<script data-th-src="@{/cij/js/m/algsapis.js}" src="/engine/cij/js/m/algsapis.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

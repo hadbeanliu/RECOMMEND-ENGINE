@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh"
+	class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	name="viewport" />
+<meta name="keywords" content=" " />
+<meta name="description" content="" />
+<title>算法管理</title>
+<link data-th-href="|${tempPath}style/font-awesome.min.css|"
+	href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/wSelect.less|"
+	href="style/wSelect.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/themes.less|"
+	href="style/themes.less" rel="stylesheet" type="text/less" />
+<link data-th-href="|${tempPath}style/layout.css|"
+	href="style/layout.css" rel="stylesheet" type="text/css" />
+<link data-th-href="|${tempPath}style/master.css|"
+	href="style/master.css" rel="stylesheet" type="text/css" />
+<link href="/engine/cij/datatables/css/dataTables.foundation.css"
+	rel="stylesheet" type="text/css" />
+<link
+	data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"
+	href="datatables-extend/css/dataTables.response.less" rel="stylesheet"
+	type="text/less" />
+<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|"
+	src="javascript/less-1.7.3.min.js"></script>
+<script data-th-src="|${tempPath}javascript/modernizr.js|"
+	src="javascript/modernizr.js"></script>
+<script data-th-src="|${tempPath}javascript/tab.exam.js|"
+	src="javascript/tab.exam.js" type="text/javascript" charset="utf8"></script>
+<script data-th-inline="javascript">
+	Cfg = {};
+	Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/'/engine';
+	Cfg.tempPath = /*[[ ${tempPath} ]]*/'/engine/tpl/engine/001/';
+</script>
+
+</head>
+<body>
+	<div id="layout">
+		<div class="wrapper" id="frame_wrapper">
+			<div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+				<div class="inner-wrap" id="frame_inner_wrap">
+					<div class="left-off-canvas-menu hide-for-large"
+						id="frame_canvas_menu" data-set="data_accordion"></div>
+					<div class="header" id="frame_header" include="include.html"
+						data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+					</div>
+					<!--end header-->
+
+					<div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+						<div class="row" id="frame_main_row1">
+							<div class="small-12 medium-2 large-2 columns"
+								id="frame_main_col1">
+								<div id="frame_accordion" include="include.html"
+									data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+								</div>
+							</div>
+							<div class="small-12 medium-10 large-10 columns bg-white"
+								id="frame_main_col2">
+								<div class="accordion_r margin-t10" id="frame_row_c2">
+									<div id="data_datatable">
+										<!--datatable-->
+										<div id="user_page">
+											<section class="panel">
+												<div class="panel-heading" data-th-text="|算法管理|"></div>
+												<div class="panel-body">
+													<div class="tab-rec-1 wdgz-index">
+														<div class="tab clearfix">
+															<ul class="clearfix" id="wdgz" data-th-value="${type}">
+																<li data-th-class="${type =='offline'}?'on':''" value="offline">
+																	<div class="tl">
+																		<div class="tr">
+																			<div class="tc">
+																				<a target="_blank">离线算法</a>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+																<li data-th-class="${type == 'online'}?'on':''" value="online">
+																	<div class="tl">
+																		<div class="tr">
+																			<div class="tc">
+																				<a target="_blank">在线算法</a>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="modcon clearfix small-padding-l small-padding-r large-padding-l0 large-padding-r0">
+														<div id="data_wdgz_con_1" data-th-style="${type=='offline'}?'':'display: none'">
+                                                        	<div class="tab-rec-1 wdgz-index">
+                                                            	<div class="tab clearfix">
+                                                                    <ul class="clearfix" id="wdgz2" data-th-value="${type}">
+                                                                        <li data-th-class="${type =='offline'}?'on':''" value="offline">
+                                                                            <div class="tl">
+                                                                                <div class="tr">
+                                                                                    <div class="tc">
+                                                                                        <a target="_blank">离线算法列表</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li data-th-class="${type == 'online'}?'on':''" value="online">
+                                                                            <div class="tl">
+                                                                                <div class="tr">
+                                                                                    <div class="tc">
+                                                                                        <a target="_blank">离线流程模板列表</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+				                                            <div class="modcon clearfix small-padding-l small-padding-r large-padding-l0 large-padding-r0">
+				                                                  <div id="data_wdgz_con_1_1">
+				                                                     <div class="row">
+                                                                        <div class="table_bar clearfix">
+                                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply">
+                                                                                <div class="left bar_apply">
+                                                                        <a data-th-href="@{/algorithm/offline/addAlg.htm}" class="button tiny">添加离线算法</a>                                                                         <a href="#" class="p-color line-he-37"><i class="fa fa-link" aria-hidden="true"></i></a>           
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                                        <div class="v_table">
+                                                                            <div class="v_page_processing row">
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                                    <span class="fa-stack fa-lg">
+                                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                                      <div id="algorithm"></div>
+                                                                                    </span><br/>
+                                                                                    <span>数据加载中...</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>													
+                                                                     </div>
+                                                                  </div>
+                                                                  <div id="data_wdgz_con_1_2" style="display: none">
+                                                                    <div class="row">
+                                                                        <div class="table_bar clearfix">
+                                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply">
+                                                                                <div class="left bar_apply">
+                                                                        <a data-th-href="@{/algorithmflow/offline/edit/.htm}" class="button tiny">添加离线流程模板</a>      
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                                        <div class="v_table">
+                                                                            <div class="v_page_processing row">
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                                    <span class="fa-stack fa-lg">
+                                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                                    </span><br/>
+                                                                                    <span>数据加载中...</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>														
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                        </div>
+														<div id="data_wdgz_con_2" data-th-style="${type=='online'}?'':'display: none'">
+                                                        	<div class="tab-rec-1 wdgz-index">
+                                                            	<div class="tab clearfix">
+                                                                    <ul class="clearfix" id="wdgz3" data-th-value="${type}">
+                                                                        <li data-th-class="${type =='offline'}?'on':''" value="offline">
+                                                                            <div class="tl">
+                                                                                <div class="tr">
+                                                                                    <div class="tc">
+                                                                                        <a target="_blank">在线算法列表</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li data-th-class="${type == 'online'}?'on':''" value="online">
+                                                                            <div class="tl">
+                                                                                <div class="tr">
+                                                                                    <div class="tc">
+                                                                                        <a target="_blank">在线流程模板列表</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+				                                            <div class="modcon clearfix small-padding-l small-padding-r large-padding-l0 large-padding-r0">
+				                                                  <div id="data_wdgz_con_2_1" >
+				                                                     <div class="row">
+                                                                        <div class="table_bar clearfix">
+                                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply">
+                                                                                <div class="left bar_apply">
+                                                                        <a data-th-href="@{/algorithm/online/addAlg.htm}" class="button tiny">添加在线算法</a>
+                                                                         <a href="#" class="p-color line-he-37"><i class="fa fa-link" aria-hidden="true"></i></a>           
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                                        <div class="v_table">
+                                                                            <div class="v_page_processing row">
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                                    <span class="fa-stack fa-lg">
+                                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                                    </span><br/>
+                                                                                    <span>数据加载中...</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>											
+                                                                     </div>
+                                                                  </div>
+                                                                  <div id="data_wdgz_con_2_2" style="display: none">
+				                                                       <div class="row">
+                                                                        <div class="table_bar clearfix">
+                                                                            <div class="bar_left hide-for-small" data-set="data_bar_apply">
+                                                                                <div class="left bar_apply">
+                                                                        <a href="engine-algorithm-add.html" class="button tiny">添加在线流程模板</a>           
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table_bar hide-for-large clearfix bar_apply_wrap" data-set="data_bar_apply"></div>
+                                                                        <div class="v_table">
+                                                                            <div class="v_page_processing row">
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div class="small-12 medium-6 large-6 columns"></div>
+                                                                                <div id="DataTables_Table_0_processing" class="dataTables_processing">
+                                                                                    <span class="fa-stack fa-lg">
+                                                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                                                      <i class="fa fa-spinner fa-spin fa-stack-1x fa-inverse"></i>
+                                                                                    </span><br/>
+                                                                                    <span>数据加载中...</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>														
+                                                                       </div>
+                                                                  </div>
+                                                                </div>
+                                                        </div>
+													</div>
+												</div>
+											</section>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end main-->
+					<!-- <div class="footer" id="frame_footer" role="contentinfo"
+						include="include.html"
+						data-th-include="${tempInternalPath + 'include'} :: #frame_footer">
+					</div> -->
+					<!--end footer-->
+
+					<div class="go" id="frame_go">
+						<a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部"
+							class="gobottom" id="goBottom"></a>
+					</div>
+
+					<div id="frame_exit_off">
+						<a class="exit-off-canvas"></a>
+					</div>
+				</div>
+			</div>
+			<div id="frame_javascript">
+				<div id="base_javascript">
+					<div data-th-replace="/engine/include :: #base_javascript"></div>
+				</div>
+				<div id="datatable_javascript">
+					<div data-th-replace="/engine/include :: #datatable_javascript"></div>
+				</div>
+				<div id="data_javascript">
+					<script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|"
+						src="javascript/jquery-2.1.3.js" type="text/javascript"
+						charset="utf8"></script>
+					<script data-th-src="|${tempPath}javascript/AppendAround.js|"
+						src="javascript/AppendAround.js" type="text/javascript"
+						charset="utf8"></script>
+					<script data-th-src="|${tempPath}javascript/wSelect.js|"
+						src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+					<script data-th-src="|${tempPath}javascript/others.js|"
+						src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+					<script data-th-src="@{/cij/datatables/js/jquery.dataTables.js}"
+						src="/engine/cij/datatables/js/jquery.dataTables.js"
+						type="text/javascript" charset="utf8"></script>
+					<script
+						data-th-src="@{/cij/datatables/js/dataTables.foundation.js}"
+						src="/engine/cij/datatables/js/dataTables.foundation.js"
+						type="text/javascript" charset="utf8"></script>
+					<script data-th-src="@{/cij/foundation/js/foundation.min.js}"
+						src="/engine/cij/foundation/js/foundation.min.js"></script>
+					<script data-th-src="@{/cij/js/jquery.datatable.page.js}"
+						src="/emall/cij/js/jquery.datatable.page.js"></script>
+					<script
+						data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|"
+						src="datatables-extend/js/foundation.extend.js"></script>
+					<script data-th-src="@{/cij/js/m/algorithm.js}"
+						src="/engine/cij/js/m/algorithm.js"></script>
+					<script>
+						$(document).foundation();
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

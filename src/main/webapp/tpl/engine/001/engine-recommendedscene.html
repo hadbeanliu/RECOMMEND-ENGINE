@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="keywords" content=" " />
+    <meta name="description" content="" />
+	<title>新建推荐场景</title>
+	<link data-th-href="|${tempPath}style/font-awesome.min.css|" href="style/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/wSelect.less|"  href="style/wSelect.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/themes.less|"  href="style/themes.less" rel="stylesheet" type="text/less" />
+	<link data-th-href="|${tempPath}style/layout.css|"  href="style/layout.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}style/master.css|"  href="style/master.css" rel="stylesheet" type="text/css" />
+	<link data-th-href="|${tempPath}datatables-extend/css/dataTables.response.less|"  href="datatables-extend/css/dataTables.response.less" rel="stylesheet" type="text/less" />
+	<script data-th-src="|${tempPath}javascript/less-1.7.3.min.js|" src="javascript/less-1.7.3.min.js"></script>
+	<script data-th-src="|${tempPath}javascript/modernizr.js|" src="javascript/modernizr.js"></script>
+	<script data-th-inline="javascript">
+	Cfg = {};
+	Cfg.contextPath = /*[[ ${#httpServletRequest.getContextPath()} ]]*/ '/engine';
+	Cfg.tempPath = /*[[ ${tempPath} ]]*/ '/engine/tpl/001/';
+	</script>
+    
+</head>
+<body>
+<div id="layout">
+    <div class="wrapper" id="frame_wrapper">
+        <div class="off-canvas-wrap" data-offcanvas="" id="frame_canvas_wrap">
+            <div class="inner-wrap" id="frame_inner_wrap">  
+                <div class="left-off-canvas-menu hide-for-large"
+						id="frame_canvas_menu" data-set="data_accordion"></div>
+				<div class="header" id="frame_header" include="include.html"
+					data-th-include="${tempInternalPath + 'include-admin'} :: #frame_header">
+				</div>
+                <!--end header-->
+
+                <div class="main engine" role="main" aria-label="主体区块" id="frame_main">
+                    <div class="row" id="frame_main_row1">
+                        <div class="small-12 medium-2 large-2 columns"
+								id="frame_main_col1">
+							<div id="frame_accordion" include="include.html"
+								data-th-include="${tempInternalPath + 'include-admin'} :: #frame_accordion">
+							</div>
+						</div>
+                        <div class="small-12 medium-10 large-10 columns bg-white" id="frame_main_col2">
+                        	<div class="accordion_r margin-t10" id="frame_row_c2">
+                            <div id="frame_dataTable">
+                            	<div id="data_datatable">
+                                	<div class="panel">
+                                    	<div class="panel-heading">
+                                        	新建推荐场景
+                                            <a href="engine-myrecommend.html" class="right p-color font-small">返回我的推荐</a>
+                                        </div>
+                                        <div class="panel-body">
+                                        	<form  data-abide="" id="scenes-form">
+                                            	<div>
+                                                    <div class="step-title">
+                                                        <ul>
+                                                            <li class="selected">
+                                                                <a>1、配置推荐场景</a>
+                                                                <a class="dis-small">配置场景</a>
+                                                            </li>
+                                                            <li>
+                                                                <a>2、配置API参数</a>
+                                                                <a class="dis-small">配置参数</a>
+                                                            </li>
+                                                            <li>
+                                                                <a>3、配置推荐算法流程</a>
+                                                                <a class="dis-small">配置算法</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="step-con">
+                                                        <ul class="no-margin">
+                                                            <li class="gallery">
+                                                                <div class="row">
+                                                                    <div class="small-12 medium-12 large-12 columns">
+                                                                        <p class="margin-b30">推荐所需的数据来自于业务，业务定义了算法所能使用的数据范围。<a href="#" class="p-color">了解更多</a></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="small-12 medium-3 large-2 columns">
+                                                                        <label class="right">推荐场景Code<span class="font-alert">*</span></label>
+                                                                    </div>
+                                                                    <div class="small-12 medium-9 large-10 columns">
+                                                                     <label>
+                                                                        <input type="text" name="ssCode" required="" placeholder="12个字以内，支持数字和英文字母，唯一标识，保存后不可修改"  />
+                                                                    </label>
+                                                                    <small class="error">请输入内容</small>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="small-12 medium-3 large-2 columns">
+                                                                        <label class="right">推荐场景名称<span class="font-alert">*</span></label>
+                                                                    </div>
+                                                                    <div class="small-12 medium-9 large-10 columns">
+                                                                     <label>
+                                                                        <input name="ssName" type="text" required="" placeholder="20个字以内，支持中文、英文字母、下划线和数字"  />
+                                                                    </label>
+                                                                    <small class="error">请输入内容</small>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="small-12 medium-3 large-2 columns">
+                                                                        <label class="right">所属业务<span class="font-alert">*</span></label>
+                                                                    </div>
+                                                                    <div id="biz-pan" class="small-12 medium-9 large-10 columns margin-t10">
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="gallery hide">
+                                                                <div class="row">
+                                                                    <div class="small-12 columns">
+                                                                        <p class="margin-b10 margin-t10">配置“获取推荐结果API”所需要的输入参数</p>
+                                                                <p class="margin-b10 margin-t10">场景指的是推荐的上下文，即场景由推荐时可用的参数决定，在推荐引擎中体现为“在线获取推荐结果API”的输入参数。</p>
+                                                                <p class="margin-b10 margin-t10">有两种场景最为常见，分别是首页推荐场景和详情页推荐场景。在执行首页推荐时，可用的参数只有用户信息；而在执行详情页推荐时，可用的参数除了用户信息，还包括当前详情页上所展示的物品信息。</p>
+                                                                    </div>
+                                                                </div>
+                                                            	
+                                                               <!-- <div class="row">
+                                                                    <div class="large-3 columns">
+                                                                        <label class="right">设置OTS预留吞吐量：</label>
+                                                                    </div>
+                                                                    <div class="large-6 columns">
+                                                                     <label>
+                                                                        <input type="text" required="" value="0"  />
+                                                                    </label>
+                                                                    </div>
+                                                                    <div class="large-3 columns">
+                                                                    	<label>
+                                                                            <a class="p-color margin-r10"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                                                                            <a class="p-color"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>  -->
+                                                                <div class="row">
+                                                                    <div class="small-12 medium-5 large-3 columns">
+                                                                        <label class="right">请选择推荐API所用的参数：</label>
+                                                                    </div>
+                                                                    <div class="small-12 medium-7 large-9 columns" id="select-param">
+                                                                     	<label class="margin-b10"><a class="button tiny" id="addCustomParams"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>新建自定义参数</a></label>
+                                                                        <div class="row">
+                                                                            <div class="small-6 medium-6 large-3 columns">
+                                                                                <input name="paramName_0" id="paramName_0" type="checkbox" checked="true" value="biz_code"/><label for="paramName_0">biz_code</label>
+                                                                            </div>
+                                                                            <div class="small-6 medium-6 large-9 columns">
+                                                                                <label><input name="paramDesc_0" id="paramDesc_0" type="hidden" value="表示业务code"/>表示业务code</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="small-6 medium-6 large-3 columns">
+                                                                                <input name="paramName_1" id="paramName_1" type="checkbox" checked="true" value="ss_code"/><label for="paramName_1">scn_code</label>
+                                                                            </div>
+                                                                            <div class="small-6 medium-6 large-9 columns">
+                                                                                <label><input name="paramDesc_1" id="paramDesc_1" type="hidden" value="表示场景code"/>表示场景code</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="small-6 medium-6 large-3 columns">
+                                                                                <input name="paramName_2" id="paramName_2" type="checkbox" checked="true" value="user_id"/><label for="paramName_2">user_id</label>
+                                                                            </div>
+                                                                            <div class="small-6 medium-6 large-9 columns">
+                                                                                <label><input name="paramDesc_2" id="paramDesc_2" type="hidden" value="表示用户的id"/>表示用户的id</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="small-6 medium-6 large-3 columns">
+                                                                                <input name="paramName_3" id="paramName_3" type="checkbox" value="item_id"/><label for="paramName_3">item_id</label>
+                                                                            </div>
+                                                                            <div class="small-6 medium-6 large-9 columns">
+                                                                                <label><input name="paramDesc_3" id="paramDesc_3" type="hidden" value="表示物品的id"/>表示物品的id</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="small-6 medium-6 large-3 columns">
+                                                                                <input name="paramName_4" id="paramName_4" type="checkbox" value="city_id"/><label for="paramName_4">city_id</label>
+                                                                            </div>
+                                                                            <div class="small-6 medium-6 large-9 columns">
+                                                                                <label><input name="paramDesc_4" id="paramDesc_4" type="hidden" value="表示城市的id"/>表示城市的id</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="gallery hide">
+                                                                <div class="row border-b padding-b">
+                                                                    <div class="small-12 columns">
+                                                            		<p>推荐算法流程指数据端到端的处理流程，即从客户的原始输入数据开始（如用户数据、物品数据、行为数据等），一直到产出能够被客户产品在线获取的推荐结果为止。</p>
+                                                                	<a class="button tiny margin-t" id="addScense"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>添加算法流程</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right margin-b">
+                                                                	<a class="button tiny margin-t">发布</a>
+                                                                </div>
+                                                                <div class="row">
+                                                            <div class="v_table simple">
+                                                            <div class="dataTables_wrapper dt-foundation no-footer">
+                                                                <table class="display dataTable no-footer" style="width: 100%;">
+                                                                    <thead>
+                                                                        <tr role="row">
+                                                                            <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="算法流程code" style="width: 25%;text-align:left;">算法流程code</th>
+                                                                            <th class="" rowspan="1" colspan="1" aria-label="离线流程" style="width: 25%;text-align:left;">离线流程</th>
+                                                                            <th class="" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="在线流程" style="width: 25%;text-align:left;">在线流程</th>
+                                                                            <th class="" rowspan="1" colspan="1" aria-label="操作" style="width: 25%;text-align:left;">操作</th>
+                                                                     
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="biz-list">
+                                                                        
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="step-btn clearfix">
+                                                        <a class="button tiny right" id="next-step">下一步</a>
+                        								<a class="button secondary tiny right" id="prev-step">上一步</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end main-->             
+                
+                <!--end footer--> 
+                
+                <div class="go" id="frame_go"><a title="返回顶部" class="gotop" id="goTop"></a> <a title="返回底部" class="gobottom" id="goBottom"></a></div>
+                
+                <div id="frame_exit_off"><a class="exit-off-canvas"></a></div>
+                <div id="frame_modal">
+                	<div id="myModal" class="reveal-modal small mymodal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    	<form data-abide="">
+                        	<h3 id="modalTitle">添加API参数</h3>
+                        	<div class="modal_wrap">
+	                            <div class="row">
+	                                <div class="large-3 columns">
+	                                    <label class="right">参数名称</label>
+	                                </div>
+	                                <div class="large-7 end columns">
+		                                 <label>
+		                                    <input type="text" id="add-param-name" required="" placeholder="20个字以内，支持英文、数字和下划线" />
+		                                </label>
+		                                <small class="error">请输入参数名称</small>
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="large-3 columns">
+	                                    <label class="right">参数说明</label>
+	                                </div>
+	                                <div class="large-7 end columns">
+		                                <label>
+		                                    <input type="text" id="add-param-desc" required="" placeholder="30个字以内"/>
+		                                </label>
+		                                <small class="error">请输入参数说明</small>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row confirm">
+	                            <div class="small-12 columns">
+	                                <a id="param-submit"  class="right button radius tiny v_oper_submit margin-r">提交</a>
+	                                <a class="close-reveal-modal right button radius tiny secondary margin-r" aria-label="Close">关闭</a>
+	                            </div>
+	                        </div>
+                        </form>
+                        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                    </div>
+                    <div id="myModal2" class="reveal-modal small mymodal" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    	<form data-abide="">
+                        	<h3 id="modalTitle">添加算法流程</h3>
+                        	<div class="modal_wrap">
+	                            <div class="row">
+	                                <div class="large-3 columns">
+	                                    <label class="right">算法流程代码<span class="font-alert">*</span></label>
+	                                </div>
+	                                <div class="large-7 end columns">
+	                                 <label>
+	                                    <input id="biz-code-text" type="text" required="" placeholder="20个字以内，英文"/>
+	                                </label>
+	                                <small class="error">请输入内容</small>
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="large-3 columns">
+	                                    <label class="right">离线计算模板</label>
+	                                </div>
+	                                <div class="large-7 end columns">
+	                                     <label>
+	                                        <select id="offline-flow-code-pan" class="medium">
+	                                        </select>
+	                                    </label>
+	                                </div>
+	                                <!-- <div class="large-4 columns">
+	                                    <label class="left font-small">默认首页推荐离线计算流程</label>
+	                                </div> -->
+	                            </div>
+	                            <div class="row hide">
+	                                <div class="large-3 columns">
+	                                    <label class="right">在线计算模板</label>
+	                                </div>
+	                                <div class="large-5 columns">
+	                                     <label>
+	                                        <select id="online-flow-code-pan" class="medium">
+	                                          <option value="">detail_ol</option>
+	                                          <option value="first">1</option>
+	                                          <option value="second">2</option>
+	                                          <option value="third">3</option>
+	                                        </select>
+	                                    </label>
+	                                </div>
+	                                <div class="large-4 columns">
+	                                    <label class="left font-small">默认详情页推荐离线计算流程</label>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row confirm">
+	                            <div class="small-12 columns">
+	                                <a id="biz-pan-submit"  class="right button radius tiny v_oper_submit margin-r">提交</a>
+	                                <a class="close-reveal-modal right button radius tiny secondary margin-r" aria-label="Close">关闭</a>
+	                            </div>
+	                        </div>
+                        </form>
+                        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                    </div>
+                    <!--操作成功提示框-->
+	                <div class="fixed v_info">
+	                    <div class="row">
+	                        <div class="large-12 columns" id="operate_alert_into">
+	                            <div data-alert="" class="success alert-box warning radius nomarg v_show_oper_info">
+	                                <div class="v_show_info"></div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div id="frame_javascript">
+        	<div id="base_javascript">
+	        	<div data-th-replace="/engine/include :: #base_javascript"></div>
+        	</div>
+        	<div id="datatable_javascript">
+
+        		<div data-th-replace="/engine/include :: #datatable_javascript"></div>
+        	</div>
+            <div id="data_javascript">
+                <script data-th-src="|${tempPath}javascript/jquery-2.1.3.js|" src="javascript/jquery-2.1.3.js" type="text/javascript" charset="utf8"></script>
+				<script data-th-src="|${tempPath}javascript/AppendAround.js|" src="javascript/AppendAround.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/wSelect.js|" src="javascript/wSelect.js" type="text/javascript" charset="utf8"></script>
+                <script data-th-src="|${tempPath}javascript/others.js|" src="javascript/others.js" type="text/javascript" charset="utf8"></script>
+         		<script src="/engine/cij/foundation/js/foundation.min.js"></script>
+                <script data-th-src="|${tempPath}datatables-extend/js/foundation.extend.js|" src="datatables-extend/js/foundation.extend.js"></script>
+                <script data-th-src="@{/cij/js/m/scenes.add.js}" src="/engine/cij/js/m/scenes.add.js"></script>
+                <script >
+                	$(document).foundation();
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
